@@ -36,7 +36,7 @@ const TodoForm = () => {
       if(result.success) {
         toast.success("Todo created Successfully");
         form.reset();
-        setIsOpne(false);
+        setIsOpen(false);
       } else {
         toast.error(result.error);
       }
@@ -62,7 +62,7 @@ const TodoForm = () => {
       <CardContent>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <Label htmlFor="title">Title *</Label>
+            <Label htmlFor="title" className='mb-3 text-xl font-bold'>Title</Label>
             <Input
               id="title"
               {...form.register("title")}
@@ -76,7 +76,7 @@ const TodoForm = () => {
           </div>
 
           <div>
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description" className='mb-3 mt-10 text-lg font-bold'>Description</Label>
             <Textarea
               id="description"
               {...form.register("description")}
@@ -91,7 +91,7 @@ const TodoForm = () => {
           </div>
 
           <div>
-            <Label htmlFor="priority">Priority</Label>
+            <Label htmlFor="priority" className='mb-3 mt-6 text-lg font-bold'>Priority</Label>
             <Select
               value={form.watch("priority")}
               onValueChange={(value) => form.setValue("priority", value)}
@@ -107,7 +107,7 @@ const TodoForm = () => {
             </Select>
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex gap-2 mt-8">
             <Button type="submit" disabled={createTodoMutation.isPending}>
               {createTodoMutation.isPending ? "Creating..." : "Create Todo"}
             </Button>

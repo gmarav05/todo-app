@@ -13,7 +13,7 @@ export default async function Home() {
       <div className="container mx-auto px-4 py-8 max-w-2xl">
         <header className="text-center mb-8">
           <h1 className="text-4xl font-bold text-foreground mb-2">Todo App</h1>
-          <p className="text-muted-foreground">Built with Next.js, Zustand, TanStack Query, Zod and Shadcn UI</p>
+          <p className="text-muted-foreground">Built with Next.js, Zustand, TanStack Query, Zod, Shadcn UI & Mongoose</p>
         </header>
         <main>
           <TodoForm/>
@@ -22,7 +22,7 @@ export default async function Home() {
         </main>
       </div>
       <footer className="mt-12 text-center text-sm text-muted-foreground">
-        <p>This app demonstrates CRUD operations with modern React patterns</p>
+        <p className="mb-8">This app demonstrates CRUD operations with modern React patterns</p>
       </footer>
 
     </div>

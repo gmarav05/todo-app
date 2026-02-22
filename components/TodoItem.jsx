@@ -52,24 +52,24 @@ const TodoItem = ({ todo }) => {
   return (
     <Card
       className={cn(
-        "transition-all duration-200 hover:shadow-md",
+        "transition-all duration-200 hover:shadow-md mt-4 mb-4",
         todo.completed && "opacity-75"
       )}
     >
-      <CardContent className="p-4">
-        <div className="flex items-start gap-3">
+      <CardContent className="p-6">
+        <div className="flex items-start gap-4">
           <Checkbox
             checked={todo.completed}
             onCheckedChange={handleToggle}
             disabled={false}
-            className="mt-1"
+            className="mt-2 mb-2"
           />
 
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center gap-3 mb-3 mt-1">
               <h3
                 className={cn(
-                  "font-medium text-sm",
+                  "font-medium text-base mt-1 mb-1",
                   todo.completed && "line-through text-muted-foreground"
                 )}
               >
@@ -77,7 +77,7 @@ const TodoItem = ({ todo }) => {
               </h3>
               <Badge
                 variant="secondary"
-                className={cn("text-xs", getPriorityColor(todo.priority))}
+                className={cn("text-xs mt-1 mb-1", getPriorityColor(todo.priority))}
               >
                 {todo.priority}
               </Badge>
@@ -86,7 +86,7 @@ const TodoItem = ({ todo }) => {
             {todo.description && (
               <p
                 className={cn(
-                  "text-sm text-muted-foreground mb-2",
+                  "text-sm text-muted-foreground mb-3 mt-1",
                   todo.completed && "line-through"
                 )}
               >
@@ -94,22 +94,22 @@ const TodoItem = ({ todo }) => {
               </p>
             )}
 
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+            <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2 mb-2">
               <Calendar className="w-3 h-3" />
-              <span>
+              <span className="mt-1 mb-1">
                 Created {new Date(todo.createdAt).toLocaleDateString()}
               </span>
             </div>
           </div>
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2 mt-2 mb-2">
             <Button
               variant="ghost"
               size="sm"
               onClick={handleDelete}
               disabled={deleteMutation.isPending}
               className={cn(
-                "h-8 w-8 p-0",
+                "h-8 w-8 p-0 mt-1 mb-1",
                 deleteMutation.isPending && "bg-destructive text-destructive-foreground"
               )}
             >

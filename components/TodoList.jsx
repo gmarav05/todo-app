@@ -1,5 +1,5 @@
 "use client"
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect } from 'react'
 import { useTodos } from '@/hooks/UseCreateTodo';
 import { useTodoStore } from '@/store/TodoStore';
 import TodoItem from './TodoItem.jsx';
@@ -31,11 +31,11 @@ const TodoList = () => {
         }
     }, [todos, filter])
 
-    useEffect(() => {
-        if (data) {
-            setTodos(data);
-        }
-    },[data, setTodos])
+    useEffect(()=>{
+     if (data) {
+      setTodos(data);
+    }
+  },[data , setTodos])
 
     if (isLoading) {
         return (
@@ -73,9 +73,9 @@ const TodoList = () => {
   return (
     <div className='space-y-3'>
         {
-            filteredTodos.map((todo) => (
-                <TodoItem key={todo.id} todo={todo}/>
-            ))
+          filteredTodos.map((todo, idx) => (
+            <TodoItem key={todo.id || todo._id || idx} todo={todo}/>
+          ))
         }
     </div>
   )
