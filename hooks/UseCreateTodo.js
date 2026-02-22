@@ -47,3 +47,19 @@ export function useTodos() {
         },
     })
 }
+
+export function useToggleTodo() {
+    const queryClient = useQueryClient();
+
+    const updateTodoInStore = useTodoStore((state) => state.updateTodo)
+
+    return useMutation({
+        mutationFn:(id) => toggleTodo(id),
+        onSuccess:(result, id) => {
+            if(result.success) {
+                updateTodoInStore(id, {completed: result.data.completed})
+                queryClient.invalidateQueries({queryKey:todoKeys.lists()})
+            }
+        }
+    })
+}
