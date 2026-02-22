@@ -2,6 +2,7 @@
 import React from 'react'
 import { useTodos } from '@/hooks/UseCreateTodo';
 import { useTodoStore } from '@/store/TodoStore';
+import TodoItem from './TodoItem.jsx';
 
 import { Card, CardContent } from '@/components/ui/card';
 import { Loader2 } from 'lucide-react'
@@ -9,6 +10,8 @@ import { Loader2 } from 'lucide-react'
 
 const TodoList = () => {
     const {data:todos, isLoading, error} = useTodos();
+
+    const filteredTodos = useTodoStore((state) => state.filteredTodos());
 
     if (isLoading) {
         return (
@@ -31,8 +34,26 @@ const TodoList = () => {
       )
   }
 
+  if(filteredTodos.length === 0){
+    return (
+        <Card>
+        <CardContent className="p-8 text-center">
+          <p className="text-muted-foreground">
+            {data?.length === 0 ? "No todos yet. Create your first one!" : "No todos match the current filter."}
+          </p>
+        </CardContent>
+      </Card>
+    )
+  }
+
   return (
-    <div>{JSON.stringify(todos)}</div>
+    <div className='space-y-3'>
+        {
+            filteredTodos.map((todo) => (
+                <TodoItem key={todo.id} todo={todo}/>
+            ))
+        }
+    </div>
   )
 }
 
