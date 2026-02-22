@@ -3,6 +3,7 @@ import {Button} from "@/components/ui/button";
 import connectDB from "@/lib/db.js"
 import TodoForm from "@/components/TodoForm";
 import TodoList from "@/components/TodoList";
+import TodoFilter from "@/components/TodoFilter";
 
 export default async function Home() {
   await connectDB();
@@ -16,6 +17,7 @@ export default async function Home() {
         </header>
         <main>
           <TodoForm/>
+          <TodoFilter/>
           <TodoList/>
         </main>
       </div>
