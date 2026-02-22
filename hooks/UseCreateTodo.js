@@ -1,6 +1,7 @@
 import { createTodo } from "@/actions/todo-actions"
 import { useTodoStore } from "@/store/TodoStore";
-import { mutationOptions, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { getTodos } from "@/actions/todo-actions";
 
 export const todoKeys = {
     all:["todos"],
@@ -8,7 +9,7 @@ export const todoKeys = {
 }
 
 export default function UseCreateTodo() {
-    const queryClient = useQueryClient;
+    const queryClient = useQueryClient();
     const addTodo = useTodoStore((state) => state.setTodo);
 
     return useMutation({
@@ -24,4 +25,25 @@ export default function UseCreateTodo() {
         }
 
     }) 
+}
+
+export function useTodos() {
+    const setTodos = useTodoStore((state) => state.setTodos);
+
+    return useQuery({
+        queryKey:todoKeys.lists(),
+
+        queryFn:async () => {
+            const result = await getTodos();
+            console.log(result);
+
+            if (result.success) {
+                setTodos(result.data);
+
+                return result.data;
+            }
+            
+            throw new Error(result.error)
+        },
+    })
 }

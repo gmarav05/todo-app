@@ -2,6 +2,7 @@ import Image from "next/image";
 import {Button} from "@/components/ui/button";
 import connectDB from "@/lib/db.js"
 import TodoForm from "@/components/TodoForm";
+import TodoList from "@/components/TodoList";
 
 export default async function Home() {
   await connectDB();
@@ -15,6 +16,7 @@ export default async function Home() {
         </header>
         <main>
           <TodoForm/>
+          <TodoList/>
         </main>
       </div>
       <footer className="mt-12 text-center text-sm text-muted-foreground">
