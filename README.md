@@ -24,6 +24,10 @@ Todo App is a production-ready task management application that demonstrates a m
 ## Live Demo
 
 
+https://github.com/user-attachments/assets/436e2d33-d249-46a2-ae76-79ce80af08ce
+
+
+
 ## Screenshot 
 
 <div style="display: flex; justify-content: center; gap: 20px;"> <img src="main.png" alt="Todo App Screenshot 1" width="400"/> <img src="task.png" alt="Todo App Screenshot 2" width="400"/> 
